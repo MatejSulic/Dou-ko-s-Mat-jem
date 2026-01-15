@@ -30,12 +30,17 @@ const reviews = [
 const container = document.getElementById('testimonial-container');
 
 if (container) {
-    reviews.forEach(r => {
+    container.innerHTML = ""; 
+    
+    // Zdvojnásobíme pole recenzí pro nekonečný efekt
+    const infiniteReviews = [...reviews, ...reviews];
+
+    infiniteReviews.forEach(r => {
         const card = document.createElement('div');
-        card.className = 'card';
+        card.className = 'card'; // Tady už nedávej reveal, animaci řeší slider
         card.innerHTML = `
             <div style="color: #FFCC00; margin-bottom: 15px;">${"★".repeat(r.stars)}</div>
-            <p style="font-style: italic;">"${r.text}"</p>
+            <p style="font-style: italic; line-height: 1.6;">"${r.text}"</p>
             <div style="display: flex; align-items: center; margin-top: 25px; border-top: 1px solid #f0f0f0; padding-top: 20px;">
                 <div style="width: 45px; height: 45px; background: #f5f5f7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 20px;">${r.emoji}</div>
                 <div style="text-align: left;">
